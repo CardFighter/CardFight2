@@ -17,12 +17,15 @@ public class Kingdom {
     private List<Card> cards;
     @SuppressWarnings("unchecked")
 	private static final Class<? extends Card>[] types = new Class[]{Elf.class, Dryad.class, Gnome.class, Goblin.class, Korrigan.class, Troll.class};
-
+    private PVector position;
+    private PVector size;
     /**
      * Constructor with no initial parameters
      */
-    public Kingdom() {
+    public Kingdom(PVector position, PVector size) {
         this.cards = new ArrayList<Card>();
+        this.position = position;
+        this.size = size;
     }
 
     /**
@@ -34,7 +37,6 @@ public class Kingdom {
     public void setCards(List<Card> newCards) {
         cards = newCards;
     }
-
 
     /**
      * Methods 
@@ -71,6 +73,8 @@ public class Kingdom {
     }
 
     public void Add(Card cardToAdd) {
+    	cardToAdd.setSize(size);
+    	cardToAdd.setPosition(position);
         cards.add(cardToAdd);
     }
     
@@ -108,11 +112,24 @@ public class Kingdom {
 		return toPrint;
 	}
 	
-	public void draw(PApplet parent,PVector position,PVector size)
+	public void draw(PApplet parent)
 	{
-		if (cards.size() == 0)
-			return;
-		cards.get(cards.size() - 1).draw(parent,position,size);
+		updateCardPosition();
+		for(int i = 0;i < this.cards.size();i++)
+		{
+			cards.get(i).draw(parent);
+		}
+	}
+	
+	public void updateCardPosition()
+	{
+		float step = size.x / 2;
+		float pos_x = position.x + step - (step * cards.size() / 1.5f);
+		for(int i = 0;i < this.cards.size();i++)
+		{
+			cards.get(i).setPosition(new PVector(pos_x,position.y));
+			pos_x += step;
+		}
 	}
     
     

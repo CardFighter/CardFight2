@@ -10,6 +10,7 @@ public class Main extends PApplet{
 	private static Game game;
 	public static PApplet mainApplet;
 	public boolean mouseGotPressed = false;
+	public static float size_factor = 1.5f;
 	
 	public static void main(String[] args)
 	{
@@ -20,7 +21,7 @@ public class Main extends PApplet{
     public void setup(){
     	mainApplet = this;
     	
-    	size(800,600);
+    	size((int)(800*size_factor),(int)(600*size_factor));
         fill(120,50,240);
         game = new Game();
     }

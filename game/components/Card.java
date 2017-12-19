@@ -11,8 +11,8 @@ public abstract class Card {
 	
 	private PImage image = null;
 	protected String image_name = "";
-	public PVector position;
-	public PVector size;
+	protected PVector position = new PVector(0f,0f);
+	protected PVector size = new PVector(0f,0f);
 	
     public Card()
     {
@@ -34,15 +34,33 @@ public abstract class Card {
     {
     }
     
-    public void draw(PApplet parent,PVector position,PVector size)
+    public void draw(PApplet parent)
     {
     	if(image == null)
     		image = parent.loadImage(this.toString() + ".png");
     	parent.image(image, position.x, position.y,size.x,size.y);
     }
     
-    public void setPosition(PVector new_position)
+    public void setSize(PVector size)
     {
-    	
+    	this.size = size;
     }
+    
+    public void setPosition(PVector position)
+    {
+    	this.position = position;	
+    }
+    
+    public boolean positionOnCard(PVector position)
+    {
+    	if(this.position.x < position.x && this.position.x + this.size.x > position.x)
+    	{
+    		if(this.position.y < position.y && this.position.y + this.size.y > position.y)
+    		{
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
 }

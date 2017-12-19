@@ -5,10 +5,10 @@ import processing.core.PVector;
 public class RandomPlayer extends Player{
 	
 	private int playTimer = 0;
-	private int timeToPlay = 1000;
+	private int timeToPlay = 5000;
 	
-	public RandomPlayer(Deck deck,PVector position,PVector size) {
-		super(deck,position,size);
+	public RandomPlayer(Deck deck,PVector hand_position,PVector hand_size,PVector kingdom_position,PVector kingdom_size) {
+		super(deck,hand_position,hand_size,kingdom_position,kingdom_size);
 	}
 
 	public Card pickCard(int delta_time)

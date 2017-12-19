@@ -12,6 +12,7 @@ import components.Card;
 import components.Dryad;
 import components.Elf;
 import components.Kingdom;
+import processing.core.PVector;
 
 public class KingdomStoryTest {
 
@@ -19,7 +20,7 @@ public class KingdomStoryTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		kingdom = new Kingdom();
+		kingdom = new Kingdom(new PVector(0f,0f),new PVector(0f,0f));
 	}
 
 	@After

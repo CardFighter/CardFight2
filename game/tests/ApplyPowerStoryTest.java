@@ -18,6 +18,7 @@ import components.Hand;
 import components.Kingdom;
 import components.Korrigan;
 import components.Troll;
+import processing.core.PVector;
 
 public class ApplyPowerStoryTest {
 	private Kingdom kingdom;
@@ -33,8 +34,8 @@ public class ApplyPowerStoryTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		kingdom = new Kingdom();
-		opponentKingdom = new Kingdom();
+		kingdom = new Kingdom(new PVector(0f,0f),new PVector(0f,0f));
+		opponentKingdom = new Kingdom(new PVector(0f,0f),new PVector(0f,0f));
 		hand = new Hand();
 		opponentHand = new Hand();
 		deck = new Deck();

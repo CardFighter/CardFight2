@@ -33,6 +33,7 @@ public class Hand{
 	public List<Card> getCards() {
 		return cards;
 	}
+	
 	public void setCards(List<Card> newCards) {
 		cards=newCards;
 	}
@@ -89,6 +90,7 @@ public class Hand{
 	public void Draw(Deck deck)
 	{
 		cards.add(deck.Draw());
+		updateCardPosition();
 	} 
 
 	public void Draw(Deck deck, int nb)
@@ -113,13 +115,22 @@ public class Hand{
 	
 	public void draw(PApplet parent)
 	{
+		updateCardPosition();
+		for (int i = 0;i < cards.size();i++)
+		{
+			cards.get(i).draw(parent);
+		}
+	}
+	
+	public void updateCardPosition()
+	{
 		float step = size.x / cards.size();
 		float pos_x = position.x;
 		for (int i = 0;i < cards.size();i++)
 		{
 			pos_x += step;
-			
-			cards.get(i).draw(parent,new PVector(pos_x,position.y),new PVector(80f,130f));
+			cards.get(i).setPosition(new PVector(pos_x,position.y));
+			cards.get(i).setSize(new PVector(110f * Main.size_factor,size.y));
 		}
 	}
 }

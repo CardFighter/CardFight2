@@ -1,5 +1,6 @@
 package components;
 
+import processing.core.PFont;
 import processing.core.PVector;
 
 public abstract class Player {
@@ -10,8 +11,6 @@ public abstract class Player {
 	protected Kingdom kingdom;
 	protected int points;
 	protected Deck deck;
-	protected PVector position;
-	protected PVector size;
 	
 	/**
      * Constructor with no initial parameters
@@ -20,13 +19,11 @@ public abstract class Player {
 		
 	}
 	
-	public Player(Deck deck,PVector position,PVector size) {
+	public Player(Deck deck,PVector hand_position,PVector hand_size,PVector kingdom_position,PVector kingdom_size) {
 		this.deck = deck;
-		this.hand = new Hand(deck,position,size);
-		this.kingdom = new Kingdom();
+		this.hand = new Hand(deck,hand_position,hand_size);
+		this.kingdom = new Kingdom(kingdom_position,kingdom_size);
 		this.points = 0;
-		this.position = position;
-		this.size = size;
 	}
 	
 	
@@ -76,6 +73,13 @@ public abstract class Player {
 		for (int i = 0; i < nb; i++) {
 			hand.Add(deck.Draw());
 		}
+	}
+	
+	public void draw_score(PVector position)
+	{
+		PFont f = Main.mainApplet.createFont("Arial",16,true);
+		Main.mainApplet.textFont(f,16);
+		Main.mainApplet.text("Score : " + this.kingdom.CountPoints(), position.x, position.y);
 	}
 	
 	public abstract Card pickCard(int delta_time);

@@ -18,8 +18,8 @@ public class Game {
 	public Game()
 	{
 		deck = new Deck(25);
-		player1 = new RandomPlayer(deck,new PVector(0.0f,420.0f),new PVector(600f,50f));
-		player2 = new RandomPlayer(deck,new PVector(0.0f,30.0f),new PVector(600f,50f));
+		player1 = new HumanPlayer(deck,new PVector(0.0f,620.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,430f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
+		player2 = new RandomPlayer(deck,new PVector(0.0f,30.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,260f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
 		currentPlayer = player1;
 		currentOpponent = player2;
 		
@@ -29,7 +29,7 @@ public class Game {
 	
 	public void update(PApplet parent)
 	{
-		if (deck.getCards().isEmpty())
+		if (currentPlayer.getHand().getCards().isEmpty())
 	    	return;
 		
 		int delta_time = parent.millis() - prev_time;
@@ -60,10 +60,12 @@ public class Game {
 	
 	public void draw(PApplet parent)
 	{
-		parent.image(background,0,0, 800, 600);
+		parent.image(background,0,0, 1200, 900);
 		player1.getHand().draw(parent);
 		player2.getHand().draw(parent);
-		player1.getKingdom().draw(parent, new PVector(360f,290), new PVector(80f,120f));
-		player2.getKingdom().draw(parent, new PVector(360f,170), new PVector(80f,120f));
+		player1.getKingdom().draw(parent);
+		player2.getKingdom().draw(parent);
+		player1.draw_score(new PVector(10f,650f));
+		player2.draw_score(new PVector(10f,200f));
 	}
 }
