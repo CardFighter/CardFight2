@@ -3,6 +3,7 @@ public class Korrigan extends Card  {
 
     public Korrigan()
     {
+    	image_name = "Korrigan";
     }
     
     

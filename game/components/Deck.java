@@ -1,6 +1,7 @@
 package components;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Deck {
 	
@@ -8,7 +9,7 @@ public class Deck {
      * Attributes
      */
     private List<Card> cards;
-    
+    private Random rand = new Random();
     /**
      * Constructor 
      * @param nbr_set
@@ -52,11 +53,11 @@ public class Deck {
      * @return drawn card
      */
 	@SuppressWarnings("unchecked")
-	private static final Class<? extends Card>[] types = new Class[]{Elf.class, Dryad.class, Gnome.class, Goblin.class, Korrigan.class, Troll.class};
+	private static final Class<? extends Card>[] types = new Class[]{Elf.class , Dryad.class, Gnome.class, Goblin.class, Korrigan.class, Troll.class};
     public Card getRndCard()
     {
     	try {
-			return ((types[(int)(Math.random() * (types.length - 1))]).newInstance());
+			return ((types[rand.nextInt(types.length)]).newInstance());
 		} catch (Exception e) {return null;}
     }
     

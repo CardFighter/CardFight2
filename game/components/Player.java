@@ -1,11 +1,17 @@
 package components;
-public class Player {
+
+import processing.core.PVector;
+
+public abstract class Player {
 	/**
      * Attributes
      */
-	private Hand hand;
-	private Kingdom kingdom;
-	private int points;
+	protected Hand hand;
+	protected Kingdom kingdom;
+	protected int points;
+	protected Deck deck;
+	protected PVector position;
+	protected PVector size;
 	
 	/**
      * Constructor with no initial parameters
@@ -13,12 +19,17 @@ public class Player {
 	public Player() {
 		
 	}
-	public Player(Hand hand, Kingdom kingdom, int points) {
-		super();
-		this.hand = hand;
-		this.kingdom = kingdom;
-		this.points = points;
+	
+	public Player(Deck deck,PVector position,PVector size) {
+		this.deck = deck;
+		this.hand = new Hand(deck,position,size);
+		this.kingdom = new Kingdom();
+		this.points = 0;
+		this.position = position;
+		this.size = size;
 	}
+	
+	
 	
 	/**
      * Getters and setters
@@ -41,12 +52,31 @@ public class Player {
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	
+	public Deck getDeck() {
+		return deck;
+	}
+	public void setDeck(Deck deck) {
+		this.deck = deck;
+	}
 	/**
      * Methods 
      */
 	
-	public int CountPoints() {
-		return kingdom.CountPoints();
+	/*
+	 * Draw from deck function
+	 */
+	
+	public void Draw()
+	{
+		this.Draw(1);
+	} 
+
+	public void Draw(int nb)
+	{
+		for (int i = 0; i < nb; i++) {
+			hand.Add(deck.Draw());
+		}
 	}
+	
+	public abstract Card pickCard(int delta_time);
 }

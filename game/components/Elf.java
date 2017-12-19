@@ -1,12 +1,14 @@
 package components;
 import java.util.Random;
 
-public class Elf extends Card {
+import processing.core.PApplet;
+import processing.core.PImage;
 
-    private static Random rand = new Random();
+public class Elf extends Card {
 
     public Elf()
     {
+    	image_name = "Elf";
     }
     
     /**
@@ -20,12 +22,16 @@ public class Elf extends Card {
     // Est ce que ca fait une copie la carte ou pas ?
     @Override
     public void Power(Hand hand,Hand opponentHand,Kingdom kingdom,Kingdom opponentKingdom,Deck deck) {
-
-        int r = rand.nextInt(kingdom.Length());
-
-        Card randomCard = kingdom.getCards().get(r);
-        randomCard.Power(hand,opponentHand,kingdom,opponentKingdom,deck);
-        kingdom.Add(randomCard);
+    	if (kingdom.getCards().size() <= 0)
+    		return;
+    	
+		int rand = (int) ((Math.random() - 0.00001)* (kingdom.getCards().size()));
+        Card randomCard = kingdom.getCards().get(rand);
+        if(!(randomCard instanceof Elf))
+        {
+	        randomCard.Power(hand,opponentHand,kingdom,opponentKingdom,deck);
+	        kingdom.Add(randomCard);
+        }
     }
     
     @Override

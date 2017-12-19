@@ -2,11 +2,10 @@ package components;
 import java.util.Random;
 
 public class Dryad extends Card {
-
-	private static Random rand = new Random();
 	
     public Dryad()
     {
+    	image_name = "Dryad";
     }
     
     
@@ -22,7 +21,9 @@ public class Dryad extends Card {
      */
     @Override
     public void Power(Hand hand,Hand opponentHand,Kingdom kingdom,Kingdom opponentKingdom,Deck deck) {
-        kingdom.Add(StealCard(opponentKingdom));
+    	Card stolen_card = StealCard(opponentKingdom); 
+    	if (stolen_card != null)
+    		kingdom.Add(stolen_card);
     }
     
     /**
@@ -31,13 +32,19 @@ public class Dryad extends Card {
      * @return stolenCard
      */
     public Card StealCard(Kingdom robbedKingdom) {
-    	
+    	if(robbedKingdom.getCards().size() >=1) {
+			int rand = (int) ((Math.random() - 0.00001)* (robbedKingdom.getCards().size()));
+			return robbedKingdom.getCards().remove(rand);
+		}
+		return null;
+    	/*
     	int r = rand.nextInt(robbedKingdom.Length());
     	
     	Card stolenCard = robbedKingdom.getCards().get(r);
     	robbedKingdom.Remove(stolenCard);
     	
     	return stolenCard;
+    	*/
     }
     
     @Override

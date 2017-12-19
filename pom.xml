@@ -1,141 +1,150 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>CardFight2</groupId>
-  <artifactId>CardFight2</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>CardFight2</groupId>
+	<artifactId>CardFight2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 
-<properties>
+	<properties>
 
-<java.version>1.8</java.version>
+		<java.version>1.8</java.version>
 
-<maven.compiler.version>3.3</maven.compiler.version>
+		<maven.compiler.version>3.3</maven.compiler.version>
 
-<junit.version>4.12</junit.version>
+		<junit.version>4.12</junit.version>
 
-<cucumber.version>1.2.5</cucumber.version>
+		<cucumber.version>1.2.5</cucumber.version>
 
-<gherkin.version>2.12.2</gherkin.version>
+		<gherkin.version>2.12.2</gherkin.version>
 
-</properties>
+	</properties>
 
 
-<dependencies>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.gemserk.animation4j/animation4j-java2d -->
+		<!-- https://mvnrepository.com/artifact/org.processing/core -->
+		<dependency>
+			<groupId>org.processing</groupId>
+			<artifactId>core</artifactId>
+			<version>2.2.1</version>
+		</dependency>
 
-<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
 
 
-<dependency>
 
-<groupId>info.cukes</groupId>
+		<dependency>
 
-<artifactId>cucumber-java</artifactId>
+			<groupId>info.cukes</groupId>
 
-<version>${cucumber.version}</version>
+			<artifactId>cucumber-java</artifactId>
 
-</dependency>
+			<version>${cucumber.version}</version>
 
-<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/info.cukes/cucumber-junit -->
 
 
-<dependency>
 
-<groupId>info.cukes</groupId>
+		<dependency>
 
-<artifactId>cucumber-junit</artifactId>
+			<groupId>info.cukes</groupId>
 
-<version>${cucumber.version}</version>
+			<artifactId>cucumber-junit</artifactId>
 
-<scope>test</scope>
+			<version>${cucumber.version}</version>
 
-</dependency>
+			<scope>test</scope>
 
-<!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/info.cukes/gherkin -->
 
 
-<dependency>
 
-<groupId>info.cukes</groupId>
+		<dependency>
 
-<artifactId>gherkin</artifactId>
+			<groupId>info.cukes</groupId>
 
-<version>${gherkin.version}</version>
+			<artifactId>gherkin</artifactId>
 
-<scope>provided</scope>
+			<version>${gherkin.version}</version>
 
-</dependency>
+			<scope>provided</scope>
 
-<!-- https://mvnrepository.com/artifact/junit/junit -->
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
 
 
-<dependency>
 
-<groupId>junit</groupId>
+		<dependency>
 
-<artifactId>junit</artifactId>
+			<groupId>junit</groupId>
 
-<version>${junit.version}</version>
+			<artifactId>junit</artifactId>
 
-<scope>test</scope>
+			<version>${junit.version}</version>
 
-</dependency>
+			<scope>test</scope>
 
-</dependencies>
+		</dependency>
 
+	</dependencies>
 
-<build>
 
+	<build>
 
-<pluginManagement>
 
+		<pluginManagement>
 
-<plugins>
 
+			<plugins>
 
-<plugin>
 
-<groupId>org.apache.maven.plugins</groupId>
+				<plugin>
 
-<artifactId>maven-compiler-plugin</artifactId>
+					<groupId>org.apache.maven.plugins</groupId>
 
-<version>${maven.compiler.version}</version>
+					<artifactId>maven-compiler-plugin</artifactId>
 
+					<version>${maven.compiler.version}</version>
 
-<configuration>
 
-<encoding>UTF-8</encoding>
+					<configuration>
 
-<source>${java.version}</source>
+						<encoding>UTF-8</encoding>
 
-<target>${java.version}</target>
+						<source>${java.version}</source>
 
-<compilerArgument>-Werror</compilerArgument>
+						<target>${java.version}</target>
 
-</configuration>
+						<compilerArgument>-Werror</compilerArgument>
 
-</plugin>
+					</configuration>
 
-</plugins>
+				</plugin>
 
-</pluginManagement>
+			</plugins>
 
-</build>
+		</pluginManagement>
 
+	</build>
 
-<scm>
 
-<connection>scm:git:https://github.com/PBZ-InsightR/GildedRoseJavaKata.git</connection>
+	<scm>
 
-<developerConnection>scm:git:https://github.com/PBZ-InsightR/GildedRoseJavaKata.git</developerConnection>
+		<connection>scm:git:https://github.com/PBZ-InsightR/GildedRoseJavaKata.git</connection>
 
-<url>https://github.com/PBZ-InsightR/GildedRoseJavaKata</url>
+		<developerConnection>scm:git:https://github.com/PBZ-InsightR/GildedRoseJavaKata.git</developerConnection>
 
-</scm>
+		<url>https://github.com/PBZ-InsightR/GildedRoseJavaKata</url>
 
-<repositories/>
+	</scm>
+
+	<repositories />
 </project>

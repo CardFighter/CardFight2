@@ -3,7 +3,7 @@ public class Troll extends Card {
 
     public Troll()
     {
-
+    	image_name = "Troll";
     }
     
     

@@ -2,23 +2,29 @@ package components;
 import java.util.ArrayList;
 import java.util.List;
 
+import processing.core.PApplet;
+import processing.core.PVector;
+
 public class Hand{
 
 	/**
 	 * Attributes
 	 */
 	private List<Card> cards;
-
+	private PVector position;
+	private PVector size;
 	/**
 	 * Constructor with no initial data
 	 */
 	public Hand(){
 		cards = new ArrayList<Card>();
 	}
-	public Hand(Deck deck)
+	public Hand(Deck deck,PVector position,PVector size)
 	{
 		cards = new ArrayList<Card>();
 		Draw(deck, 5);
+		this.position = position;
+		this.size = size;
 	}
 
 	/**
@@ -63,8 +69,8 @@ public class Hand{
 
 	public Card RandomRemove() // return a random card
 	{
-		if(cards.size() >=1) {
-			int rand = (int) (Math.random() * cards.size());
+		if(cards.size() > 0) {
+			int rand = (int) ((Math.random())* (cards.size()));
 			return cards.remove(rand);
 		}
 		return null;
@@ -104,4 +110,16 @@ public class Hand{
 		
 		return toPrint;
 	} 
+	
+	public void draw(PApplet parent)
+	{
+		float step = size.x / cards.size();
+		float pos_x = position.x;
+		for (int i = 0;i < cards.size();i++)
+		{
+			pos_x += step;
+			
+			cards.get(i).draw(parent,new PVector(pos_x,position.y),new PVector(80f,130f));
+		}
+	}
 }

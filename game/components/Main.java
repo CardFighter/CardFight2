@@ -1,20 +1,39 @@
 package components;
-public class Main {
+import processing.core.PApplet;
+
+public class Main extends PApplet{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static Game game;
+	public static PApplet mainApplet;
+	public boolean mouseGotPressed = false;
+	
 	public static void main(String[] args)
 	{
-		// Je sais pas qui fait des tests ici mais les tests on les fait dans
-		// target => test-classes
-		
-		/*
-		Deck deck_test = new Deck(2);
-		System.out.println("Hello World");
-		System.out.println(deck_test.Cards().size());
-		System.out.println(deck_test.Cards().get(0).Race());
-		deck_test.Shuffle();
-		System.out.println(deck_test.Cards().get(0).Race());
-		deck_test.Shuffle();
-		System.out.println(deck_test.Cards().get(0).Race());
-		*/
-
+		PApplet.main("components.Main");
 	}
+	
+
+    public void setup(){
+    	mainApplet = this;
+    	
+    	size(800,600);
+        fill(120,50,240);
+        game = new Game();
+    }
+
+    public void draw(){
+    	game.update(this);
+    	this.mouseGotPressed = false;
+    	this.clear();
+    	game.draw(this);
+    }
+    
+    public void mouseClicked()
+    {
+    	mouseGotPressed = true;
+    }
 }

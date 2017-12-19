@@ -4,6 +4,7 @@ public class Goblin extends Card {
 
     public Goblin()
     {
+    	image_name = "Goblin";
     }
     
     /**

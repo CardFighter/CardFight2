@@ -6,6 +6,9 @@ import java.util.List;
 
 import java.util.Map;
 
+import processing.core.PApplet;
+import processing.core.PVector;
+
 public class Kingdom {
 
 	/**
@@ -103,6 +106,13 @@ public class Kingdom {
 			}
 		}
 		return toPrint;
+	}
+	
+	public void draw(PApplet parent,PVector position,PVector size)
+	{
+		if (cards.size() == 0)
+			return;
+		cards.get(cards.size() - 1).draw(parent,position,size);
 	}
     
     

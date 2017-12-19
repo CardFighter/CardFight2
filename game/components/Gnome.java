@@ -3,6 +3,7 @@ public class Gnome extends Card {
 
     public Gnome()
     {
+    	image_name = "Gnome";
     }
 
     /**
