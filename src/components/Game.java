@@ -1,6 +1,7 @@
 package components;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 import processing.core.PVector;
 
@@ -29,7 +30,7 @@ public class Game {
 	
 	public void update(PApplet parent)
 	{
-		if (currentPlayer.getHand().getCards().isEmpty())
+		if (deck.getCards().size() == 0)
 	    	return;
 		
 		int delta_time = parent.millis() - prev_time;
@@ -67,5 +68,12 @@ public class Game {
 		player2.getKingdom().draw(parent);
 		player1.draw_score(new PVector(10f,650f));
 		player2.draw_score(new PVector(10f,200f));
+		
+		if(deck.getCards().size() == 0)
+		{
+			PFont f = Main.mainApplet.createFont("Arial",16,true);
+			Main.mainApplet.textFont(f,16);
+			Main.mainApplet.text("End of Game",1100,450);
+		}
 	}
 }

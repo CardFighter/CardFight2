@@ -89,7 +89,10 @@ public class Hand{
 
 	public void Draw(Deck deck)
 	{
-		cards.add(deck.Draw());
+		Card new_card = deck.Draw();
+		if(new_card == null)
+			return;
+		cards.add(new_card);
 		updateCardPosition();
 	} 
 
