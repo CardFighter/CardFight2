@@ -18,12 +18,12 @@ public class Game {
 	public Game()
 	{
 		deck = new Deck(25);
-		player1 = new HumanPlayer(deck,new PVector(0.0f,620.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,430f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
-		player2 = new RandomPlayer(deck,new PVector(0.0f,30.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,260f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
+		player1 = new HumanPlayer(deck,new PVector(0.0f,650.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,430f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
+		player2 = new RandomPlayer(deck,new PVector(0.0f,00.0f),new PVector(600f * Main.size_factor,150f * Main.size_factor),new PVector(550f,260f),new PVector(90f * Main.size_factor,110f * Main.size_factor));
 		currentPlayer = player1;
 		currentOpponent = player2;
 		
-		background = Main.mainApplet.loadImage("background.png");
+		background = Main.mainApplet.loadImage("backgroundV2.png");
 		prev_time = 0;
 	}
 	
